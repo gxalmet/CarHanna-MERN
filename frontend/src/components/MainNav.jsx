@@ -159,6 +159,7 @@ export default function MainNav() {
     // };
 
     const signOutHandler = () => {
+      debugger;
       dispatch(signOut());
       history.push("/home");
       
@@ -276,8 +277,8 @@ export default function MainNav() {
                         <ListItemText primary="Profile"/>
                       </ListItem>
                       </Link>
-                      <ListItem button key="signout">
-                        <ListItemIcon><ExitToAppIcon onClick={signOutHandler}/></ListItemIcon>
+                      <ListItem button key="signout" onClick={signOutHandler}>
+                        <ListItemIcon><ExitToAppIcon /></ListItemIcon>
                         <ListItemText style={{color:'grey'}} primary="Sign Out"/>
                       </ListItem>
                     </React.Fragment>

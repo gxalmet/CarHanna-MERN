@@ -5,42 +5,9 @@ import { signIn } from '../actions/userActions';
 
 import { Form, Button } from 'react-bootstrap';
 import Grid from '@material-ui/core/Grid';
-// import FormControl from '@material-ui/core/FormControl';
-// import FormGroup from '@material-ui/core/FormGroup';
-// import Input from '@material-ui/core/Input';
-// import InputLabel from '@material-ui/core/InputLabel';
-// import FormHelperText from '@material-ui/core/FormHelperText';
-// import Grid from '@material-ui/core/Grid';
-// import Card from '@material-ui/core/Card';
-// import CardContent from '@material-ui/core/CardContent';
-// import { makeStyles } from '@material-ui/core/styles';
- import Typography from '@material-ui/core/Typography';
-// //import Row from '@material-ui/core/Row';
-
-
-// import FilledInput from '@material-ui/core/FilledInput';
-// import OutlinedInput from '@material-ui/core/OutlinedInput';
-
-// import InputAdornment from '@material-ui/core/InputAdornment';
-// import IconButton from '@material-ui/core/IconButton';
-
-// const useStyles = makeStyles({
-//     root: {
-//       minWidth: 275,
-//     },
-//     bullet: {
-//       display: 'inline-block',
-//       margin: '0 2px',
-//       transform: 'scale(0.8)',
-//     },
-//     title: {
-//       fontSize: 14,
-      
-//     },
-//     pos: {
-//       marginBottom: 12,
-//     },
-//   });
+import Typography from '@material-ui/core/Typography';
+import LoadingBox from '../components/LoadingBox';
+import MessageBox from '../components/MessageBox';
 
 export default function LoginScreen(props) {
 
@@ -49,7 +16,7 @@ export default function LoginScreen(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const userSignIn = useSelector((state)=> state.userSignIn);
-  const { userInfo } = userSignIn;
+  const { userInfo, loading, error } = userSignIn;
 
   const submitHandler = (e) =>{
       e.preventDefault();
@@ -77,6 +44,8 @@ export default function LoginScreen(props) {
             justify="center"
             alignItems="center">
             <Grid item xs={9}>
+                { loading && ( <LoadingBox id ="1" mes="Loading..."></LoadingBox> ) }
+                { error && ( <MessageBox id ="2" variant='warning' mes={error}></MessageBox> ) }
                 <Typography variant="h5" align="center" > 
                     Sign In
                 </Typography>
