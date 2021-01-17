@@ -90,7 +90,6 @@ export const searchProjects = (id, parentId, treeflag) => async(dispatch, getSta
         }
     }
 
-
     dispatch({ type: PROJECTS_SEARCH_REQUEST });
     try {
         const url = `/api/projects/searchprojects`;

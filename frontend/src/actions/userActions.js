@@ -1,6 +1,6 @@
 import Axios from 'axios';
 
-import { USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS, USER_SIGNIN_FAIL, USER_SIGNOUT, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_REGISTER_FAIL, USER_UPDATE_REQUEST, USER_UPDATE_SUCCESS, USER_UPDATE_FAIL } from "../constants/userConstants";
+import { USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS, USER_SIGNIN_FAIL, USER_SIGNOUT, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_REGISTER_FAIL, USER_UPDATE_REQUEST, USER_UPDATE_SUCCESS, USER_UPDATE_FAIL, USERS_SEARCH_REQUEST, USERS_SEARCH_SUCCESS, USERS_SEARCH_FAIL } from "../constants/userConstants";
 
 
 export const signIn = (email, password) => async(dispatch) => {
@@ -66,6 +66,35 @@ export const update = ({ userId, name, surname, email, password }) => async(disp
     } catch (error) {
         dispatch({
             type: USER_UPDATE_FAIL,
+            payload: error.response && error.response.data.message ?
+                error.response.data.message : error.message
+        });
+    }
+}
+
+export const search = (fieldSearch) => async(dispatch, getState) => {
+
+    const { userSignIn: { userInfo } } = getState();
+
+    var config = {
+        headers: { Authorization: 'Bearer ' + userInfo.token },
+        params: {
+            fieldSearch: fieldSearch,
+            userId: userInfo._id
+        }
+    }
+
+    dispatch({ type: USERS_SEARCH_REQUEST });
+    try {
+        const url = `/api/users/search`;
+
+        const { data } = await Axios.get(url, config);
+
+        dispatch({ type: USERS_SEARCH_SUCCESS, payload: data });
+
+    } catch (error) {
+        dispatch({
+            type: USERS_SEARCH_FAIL,
             payload: error.response && error.response.data.message ?
                 error.response.data.message : error.message
         });

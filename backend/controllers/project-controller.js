@@ -54,11 +54,9 @@ var projectController = {
     search: async function(req, res) {
         var tree = req.query.tree;
         var user = req.query.user_id;
-        var teamQuery = [];
-        teamQuery.push(user);
-        var query = { team: teamQuery };
 
-        //var query = req.query;
+        var query = { team: user };
+
         try {
             const projectsSearch = await Project.find(query);
             var projectsResult = [];

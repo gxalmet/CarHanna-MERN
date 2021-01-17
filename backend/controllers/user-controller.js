@@ -1,4 +1,5 @@
 import User from '../models/user.js';
+import Team from '../models/team.js';
 import bcrypt from 'bcryptjs';
 
 import { getToken, generateToken } from '../utils.js';
@@ -84,7 +85,7 @@ var userController = {
             return res.status(404).send({ message: "User not found." });
         }
     },
-    deleteuser: async function(req, res) {
+    deleteUser: async function(req, res) {
         const userID = req.params.id;
         const user = await User.findOneAndDelete(userID);
 
@@ -101,6 +102,54 @@ var userController = {
             return res.status(404).send({ message: "User not found." });
         }
     },
+    searchUser: async function(req, res) {
+
+        const fieldSearch = req.query.fieldSearch;
+        if (!fieldSearch) {
+            return res.status(404).send({ message: "Enter some value to search" });
+        }
+        var userId = req.query.userId;
+        var queryUsers = {
+            $or: [
+                { name: { $regex: fieldSearch, $options: "i" } },
+                { surname: { $regex: fieldSearch, $options: "i" } },
+                { email: { $regex: fieldSearch, $options: "i" } }
+            ]
+        };
+
+        var queryTeam = { user_id: userId };
+
+        try {
+            var readTeam = await Team.find(queryTeam);
+        } catch (error) {
+            console.log(error);
+            return res.status(404).send({ message: "Error searching teams for user selection." });
+        }
+
+        try {
+
+            const usersSearch = await User.find(queryUsers);
+
+            const usersResult = [];
+            usersSearch.map(user => {
+
+                const find = readTeam[0].collegues.map(col => {
+                    if (user._id.equals(col)) {
+                        return true
+                    }
+                });
+
+                if (!find) {
+                    usersResult.push({ _id: user._id, name: user.name, surname: user.surname, email: user.email });
+                }
+            });
+
+            return res.status(200).send(usersResult);
+        } catch (error) {
+            console.log(error);
+            return res.status(404).send({ message: "Users not found." });
+        }
+    }
 }
 
 export default userController;

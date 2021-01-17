@@ -15,10 +15,25 @@ import
 } from 'react-router-dom';
 
 import { searchProjects } from '../actions/projectActions';
-import { getFirstDate, getlastDate, convertDate, buildCalendar, buildHeaderCalendar } from '../utils/utils';
+import 
+{ 
+    getFirstDate, 
+    getlastDate, 
+    // convertDate, 
+    buildCalendar, 
+    buildHeaderCalendar 
+} from '../utils/utils';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import { Form, Col, Button, Card, CardDeck, CardGroup } from 'react-bootstrap';
+import 
+{ 
+    // Form, 
+    // Col, 
+    Button, 
+    // Card, 
+    // CardDeck, 
+    // CardGroup 
+} from 'react-bootstrap';
 
 import Table from '@material-ui/core/Table';
 import TableRow from '@material-ui/core/TableRow';
@@ -29,10 +44,6 @@ import TableBody from '@material-ui/core/TableBody';
 import Paper from '@material-ui/core/Paper';
 
 //import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
-
-
-
-
 
 export default function CalendarScreen() {
 

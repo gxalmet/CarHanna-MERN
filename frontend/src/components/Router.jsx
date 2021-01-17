@@ -12,6 +12,7 @@ import CreateProjectScreen from '../screens/CreateProjectScreen';
 import UserProfileScreen from '../screens/UserProfileScreen';
 import ChatScreen from '../screens/ChatScreen';
 import TeamScreen from '../screens/TeamScreen';
+import CreateTeamScreen from '../screens/CreateTeamScreen';
 
 export default function Router(){
 
@@ -37,6 +38,7 @@ export default function Router(){
             <Route path="/userprofile" component={UserProfileScreen}></Route> 
             <Route path="/chat" component={ChatScreen}></Route>
             <Route path="/team" component={TeamScreen}></Route>
+            <Route path="/createteam" component={CreateTeamScreen}></Route>
         </Switch>
     );
 }

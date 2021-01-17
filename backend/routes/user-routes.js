@@ -8,10 +8,7 @@ router.post('/signin', userController.signIn);
 router.post('/register', userController.createUser);
 router.get('/readuser:id', userController.readUser);
 router.put('/updateuser:id', isAuth, userController.updateUser);
-router.delete('/deleteuser:id', userController.deleteuser);
-
-// router.post('/createuser', userController.createUser);
-// router.post('/confirmlogin', userController.updateUser);
-// router.get('/getuserbytoken', userController.updateUser);
+router.delete('/deleteuser:id', isAuth, userController.deleteUser);
+router.get('/search', isAuth, userController.searchUser);
 
 export default router;

@@ -1,5 +1,8 @@
 import {
 
+    USERS_SEARCH_FAIL,
+    USERS_SEARCH_REQUEST,
+    USERS_SEARCH_SUCCESS,
     USER_REGISTER_REQUEST,
     USER_SIGNIN_FAIL,
     USER_SIGNIN_REQUEST,
@@ -47,6 +50,19 @@ export const userUpdateReducer = (state = {}, action) => {
         case USER_UPDATE_SUCCESS:
             return { loading: false, userInfo: action.payload, success: true };
         case USER_UPDATE_FAIL:
+            return { loading: false, error: action.payload, success: false };
+        default:
+            return state;
+    }
+}
+
+export const userSearchReducer = (state = {}, action) => {
+    switch (action.type) {
+        case USERS_SEARCH_REQUEST:
+            return { loading: true };
+        case USERS_SEARCH_SUCCESS:
+            return { loading: false, users: action.payload, success: true };
+        case USERS_SEARCH_FAIL:
             return { loading: false, error: action.payload, success: false };
         default:
             return state;

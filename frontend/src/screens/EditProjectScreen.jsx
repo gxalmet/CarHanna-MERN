@@ -22,6 +22,7 @@ import MessageBox from '../components/MessageBox';
 import { useHistory } from 'react-router-dom';
 
 import { convertDate } from  '../utils/utils.js';
+import AddCollegueToProject from '../components/AddCollegueToProject';
 
 export default function EditProjectScreen(props) {
     const history = useHistory();
@@ -37,31 +38,48 @@ export default function EditProjectScreen(props) {
     const [begin_date, setBegin_date] = useState('');
     const [end_date, setEnd_date] = useState('');
     const [status, setStatus] = useState('');
+    const [team, setTeam] = useState([])
 
     function saveProjectButton(e) {
+        
         e.preventDefault();  
                                        
-        dispatch(updateProject(project._id, null, name, description, begin_date, end_date, status, null ));       
+        dispatch(updateProject(project._id, null, name, description, begin_date, end_date, status, team ));       
     }
 
     function createProjectButton(e) {
+        
         var ref = '/createproject' + project._id;
         history.push(ref);                        
     }
     function createChatButton(e) {
+        
         dispatch(createScream(projectId));                     
     }
+
+    function addIdToTeam(e,id) {
+        setTeam(team => team.concat(id)); 
+    }
+    function removeIdToTeam(e,id) {
+        var array = [...team]; // make a separate copy of the array
+        var index = array.indexOf(id)
+        if (index !== -1) {
+          array.splice(index, 1);
+          setTeam(array);
+        }
+    }
+
 
     useEffect(() => {
         
         if(loading === false){
             if(project && project._id === projectId){
-
                 setName(project.name);
                 setDescription(project.description);
                 setBegin_date( convertDate(project.begin_date) );
                 setEnd_date( convertDate(project.end_date) );
                 setStatus(project.status);
+                setTeam(project.team);
             }else{
                 dispatch(readProject(projectId));
             }   
@@ -111,15 +129,21 @@ export default function EditProjectScreen(props) {
                                 }else{
                                     return (<option key={i} value={stat.value} >{stat.label}</option>)
                                 }
-                                
                             })}
-                            
-                            {/* <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option> */}
                         </Form.Control>
                     </Form.Group>
+                    
+                    { project && team &&
+                    
+                        <AddCollegueToProject 
+                            key={project._id}
+                            teamProject={team} 
+                            projectOwner={project.user_id} 
+                            addUserToTeam={addIdToTeam}
+                            removeUserToTeam={removeIdToTeam}>
+                        </AddCollegueToProject>
+                    }
+                    
                     <br></br>
                     <Button variant="primary" block onClick={saveProjectButton}>
                         Submit

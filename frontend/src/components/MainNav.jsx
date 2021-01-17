@@ -74,6 +74,7 @@ const useStyles = makeStyles((theme) => ({
     title: {
         flexGrow: 1,
         textDecoration: 'none' ,
+        color: 'grey'
     },
     link: {
       '&:hover': {
@@ -120,6 +121,9 @@ const useStyles = makeStyles((theme) => ({
       flexGrow: 1,
       padding: theme.spacing(3),
     },
+    listMenu: {
+      color: 'grey'
+    }
   }));
 
 export default function MainNav() {
@@ -135,10 +139,12 @@ export default function MainNav() {
 
     const navigate = (ref) => {
       
+      handleDrawerClose();
       history.push(ref);
     }
 
     const handleDrawerOpen = () => {
+      
         setOpen(true);
     };
 
@@ -159,11 +165,16 @@ export default function MainNav() {
     // };
 
     const signOutHandler = () => {
-      debugger;
+      
       dispatch(signOut());
       history.push("/home");
       
     }
+    var user = '';
+    if(userInfo){
+      user = userInfo.name + ' ' + userInfo.surname;
+    }
+    
     
 
     return (
@@ -184,24 +195,26 @@ export default function MainNav() {
                         >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h5" className={classes.title} > 
-                      <Link to="/home" className={classes.link} style={{textDecoration: 'none', color:'grey'}}>CARHANNA</Link>  
+                    <Typography variant="h5" className={classes.title} onClick={()=>navigate('/home')}> 
+                      {/* <Link to="/home" className={classes.link} style={{textDecoration: 'none', color:'grey'}}> */}
+                        CARHANNA
+                        {/* </Link>   */}
                     </Typography>
 
                     { userInfo &&  ( 
-                      <div>
+                      // <div>
                         <IconButton
                           aria-label="account of current user"
                           aria-controls="menu-appbar"
                           aria-haspopup="false"
-                          onClick={() => navigate('/')}
+                          onClick={() => navigate('/userprofile')}
                           color="inherit"
                           aria-placeholder={userInfo.name}>
                             
                           <AccountCircle placeholder={userInfo.name}></AccountCircle>
                          </IconButton>
 
-                    </div>
+                    // </div>
                     ) }
                     
                 </Toolbar>
@@ -226,77 +239,78 @@ export default function MainNav() {
               </div>
               <Divider />
               <List>
-                <Link to="/home" style={{textDecoration: 'none', color:'grey'}}>
-                  <ListItem button key="home" >
+                {/* <Link to="/home" style={{textDecoration: 'none', color:'grey'}}> */}
+                  <ListItem button key="home" onClick={()=>navigate('/home')} className={classes.listMenu}>
                     <ListItemIcon><HomeIcon /></ListItemIcon>
                     <ListItemText primary="Home"/>
                   </ListItem>
-                </Link>
+                {/* </Link> */}
                 {
                   userInfo ? (
                     <React.Fragment>
-                        <Link to="/team" style={{textDecoration: 'none', color:'grey'}}>
-                        <ListItem button key="team">
+                        {/* <Link to="/team" style={{textDecoration: 'none', color:'grey'}}> */}
+                        <ListItem button key="team" onClick={()=>navigate('/team')} className={classes.listMenu}>
                           <ListItemIcon><GroupWorkIcon /></ListItemIcon>
                           <ListItemText primary="My team"/>
                         </ListItem>
-                      </Link>
-                      <Link to="/projects" style={{textDecoration: 'none', color:'grey'}}>
-                        <ListItem button key="project">
-                          <ListItemIcon><ListIcon /></ListItemIcon>
-                          <ListItemText primary="Projects"/>
+                        {/* </Link>  */}
+                      {/* <Link to="/projects" style={{textDecoration: 'none', color:'grey'}}> */}
+                        <ListItem button key="project" onClick={()=>navigate('/projects')} className={classes.listMenu}>
+                          <ListItemIcon><ListIcon/></ListItemIcon>
+                          <ListItemText primary="Projects" style={{ color:'grey'}}></ListItemText>
                         </ListItem>
-                      </Link>
-                      <Link to="/createproject" style={{textDecoration: 'none', color:'grey'}}>
-                        <ListItem button key="createproject">
+                      {/* </Link> */}
+                      {/* <Link to="/createproject" style={{textDecoration: 'none', color:'grey'}}> */}
+                        <ListItem button key="createproject" onClick={()=>navigate('/createproject')} className={classes.listMenu}>
                           <ListItemIcon><CreateNewFolderIcon /></ListItemIcon>
                           <ListItemText primary="Create project"/>
                         </ListItem>
-                      </Link>
-                      <Link to="/agenda" style={{textDecoration: 'none', color:'grey'}}>
-                        <ListItem button key="agenda">
+                      {/* </Link> */}
+                      {/* <Link to="/agenda" style={{textDecoration: 'none', color:'grey'}}> */}
+                        <ListItem button key="agenda" onClick={()=>navigate('/agenda')} className={classes.listMenu}>
                           <ListItemIcon><ViewAgendaIcon /></ListItemIcon>
                           <ListItemText primary="Agenda"/>
                         </ListItem>
-                      </Link>
-                      <Link to="/calendar" style={{textDecoration: 'none', color:'grey'}}>
-                        <ListItem button key="calendar">
+                      {/* </Link> */}
+                      {/* <Link to="/calendar" style={{textDecoration: 'none', color:'grey'}}> */}
+                        <ListItem button key="calendar" onClick={()=>navigate('/calendar')} className={classes.listMenu}>
                           <ListItemIcon><CalendarViewDayIcon /></ListItemIcon>
                           <ListItemText primary="Calendar"/>
                         </ListItem>
-                      </Link>
-                      <Link to="/chat" style={{textDecoration: 'none', color:'grey'}}>
-                        <ListItem button key="chat">
+                      {/* </Link> */}
+                      {/* <Link to="/chat" style={{textDecoration: 'none', color:'grey'}}> */}
+                        <ListItem button key="chat" onClick={()=>navigate('/chat')} className={classes.listMenu}>
                           <ListItemIcon><ChatIcon /></ListItemIcon>
                           <ListItemText primary="Chat"/>
                         </ListItem>
-                      </Link>
-                      <Link to="/userprofile" style={{textDecoration: 'none', color:'grey'}}>
-                      <ListItem button key="profile">
+                      {/* </Link> */}
+                      {/* <Link to="/userprofile" style={{textDecoration: 'none', color:'grey'}}> */}
+                      <ListItem button key="profile" onClick={()=>navigate('/userprofile')} className={classes.listMenu}>
                         <ListItemIcon><AssignmentIndIcon /></ListItemIcon>
-                        <ListItemText primary="Profile"/>
+                        
+                        <ListItemText primary={user}/>
                       </ListItem>
-                      </Link>
-                      <ListItem button key="signout" onClick={signOutHandler}>
+                      {/* </Link> */}
+                      <ListItem button key="signout" onClick={signOutHandler} className={classes.listMenu}>
                         <ListItemIcon><ExitToAppIcon /></ListItemIcon>
-                        <ListItemText style={{color:'grey'}} primary="Sign Out"/>
+                        <ListItemText primary="Sign Out"/>
                       </ListItem>
                     </React.Fragment>
                   ) : 
                   (
                     <React.Fragment>
-                      <Link to="/login" style={{textDecoration: 'none', color:'grey'}}>
-                      <ListItem button key="login">
+                      {/* <Link to="/login" style={{textDecoration: 'none', color:'grey'}}> */}
+                      <ListItem button key="login" onClick={()=>navigate('/login')}>
                         <ListItemIcon><AccessibilityIcon /></ListItemIcon>
                         <ListItemText primary="Login"/>
                       </ListItem>
-                      </Link>
-                      <Link to="/register" style={{textDecoration: 'none', color:'grey'}}>
-                      <ListItem button key="register">
+                      {/* </Link> */}
+                      {/* <Link to="/register" style={{textDecoration: 'none', color:'grey'}}> */}
+                      <ListItem button key="register" onClick={()=>navigate('/register')}>
                         <ListItemIcon>< InputTwoToneIcon/></ListItemIcon>
                         <ListItemText primary="Register"/>
                       </ListItem>
-                      </Link>
+                      {/* </Link> */}
                     </React.Fragment>
                   )
                 }

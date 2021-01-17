@@ -4,7 +4,8 @@ import thunk from 'redux-thunk';
 import {
     userUpdateReducer,
     userRegisterReducer,
-    userSignInReducer
+    userSignInReducer,
+    userSearchReducer
 } from './reducers/userReducer';
 
 import {
@@ -20,6 +21,13 @@ import {
     readScreamReducer,
     updateScreamReducer
 } from './reducers/screamReducer';
+
+import {
+    createTeamReducer,
+    readTeamReducer,
+    updateTeamReducer
+} from './reducers/teamReducers';
+
 const initialState = {
     userSignIn: {
         userInfo: localStorage.getItem('userInfo') ?
@@ -30,14 +38,21 @@ const reducer = combineReducers({
     userSignIn: userSignInReducer,
     userRegister: userRegisterReducer,
     userUpdate: userUpdateReducer,
+    usersSearch: userSearchReducer,
+
     projectCreate: createProjectReducer,
     projectUpdate: updateProjectReducer,
     projectDelete: deleteProjectReducer,
     projectRead: readProjectReducer,
     projectsSearch: searchProjectsReducer,
+
     screamCreate: createScreamReducer,
     screamRead: readScreamReducer,
-    screamUpdate: updateScreamReducer
+    screamUpdate: updateScreamReducer,
+
+    teamCreate: createTeamReducer,
+    teamRead: readTeamReducer,
+    teamUpdate: updateTeamReducer
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
