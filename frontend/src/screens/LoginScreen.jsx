@@ -26,7 +26,7 @@ export default function LoginScreen(props) {
   useEffect(() => {
       if(userInfo){
           // props.history.push(redirect);
-          props.history.push("/");
+          props.history.push("/home");
       }
   }, [props.history, redirect, userInfo]);
     // const classes = useStyles();
