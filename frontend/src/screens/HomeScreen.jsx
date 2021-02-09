@@ -73,7 +73,7 @@ export default function HomeScreen() {
                                     <Card.Subtitle className="mb-2 text-muted">Create projects</Card.Subtitle>
                                     <Card.Text>
                                         Check the calendar to manage your projects ...
-                                        {userInfo ? (<Link to='/calendar'> here</Link> ) : (<Link to='/register'> here</Link> )}
+                                        {userInfo ? (<Link to='/calendar'> here</Link>) : (<Link to='/register'> here</Link> )}
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
@@ -87,7 +87,8 @@ export default function HomeScreen() {
                                     <Card.Title>Chat</Card.Title>
                                     <Card.Subtitle className="mb-2 text-muted">Chat of your projects</Card.Subtitle>
                                     <Card.Text>
-                                        Chat with your collegues and build your projects...<Link to='/chat'> here</Link>
+                                        Chat with your collegues and build your projects...
+                                        {userInfo ? (<Link to='/chat'> here</Link>) : (<Link to='/register'> here</Link> )}
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
