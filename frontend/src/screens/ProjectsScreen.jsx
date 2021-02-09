@@ -65,9 +65,9 @@ export default function ProjectsScreen () {
                             <TableRow>
                                 <TableCell />
                                 <TableCell>Project Name</TableCell>
-                                <TableCell align="right">Begin Date</TableCell>
+                                {/* <TableCell align="right">Begin Date</TableCell>
                                 <TableCell align="right">End Date</TableCell>
-                                <TableCell align="right">Status</TableCell>
+                                <TableCell align="right">Status</TableCell> */}
                             </TableRow>
                         </TableHead>
                         <TableBody>

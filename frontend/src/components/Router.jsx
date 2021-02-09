@@ -11,6 +11,8 @@ import EditProjectScreen from '../screens/EditProjectScreen';
 import CreateProjectScreen from '../screens/CreateProjectScreen';
 import UserProfileScreen from '../screens/UserProfileScreen';
 import ChatScreen from '../screens/ChatScreen';
+import ChatDevScreen from '../screens/ChatDevScreen';
+import ScreamsScreen from '../screens/ScreamsScreen';
 import TeamScreen from '../screens/TeamScreen';
 import CreateTeamScreen from '../screens/CreateTeamScreen';
 
@@ -37,6 +39,8 @@ export default function Router(){
             <Route path="/agenda" component={AgendaScreen}></Route> 
             <Route path="/userprofile" component={UserProfileScreen}></Route> 
             <Route path="/chat" component={ChatScreen}></Route>
+            <Route path="/chatdev" component={ChatDevScreen}></Route>
+            <Route path="/screams:id" component={ScreamsScreen}></Route>
             <Route path="/team" component={TeamScreen}></Route>
             <Route path="/createteam" component={CreateTeamScreen}></Route>
         </Switch>

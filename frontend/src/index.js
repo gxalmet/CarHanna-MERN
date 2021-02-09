@@ -7,6 +7,8 @@ import { Provider } from 'react-redux';
 import store from './store';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import * as serviceWorker from './serviceWorker';
+
 ReactDOM.render(
   <Provider store={store}>
     {/* <React.StrictMode>
@@ -21,3 +23,4 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+serviceWorker.register();

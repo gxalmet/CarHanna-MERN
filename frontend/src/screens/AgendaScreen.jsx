@@ -125,27 +125,27 @@ export default function AgendaScreen() {
                 <Card>
                 <Card.Body>
                 <TableContainer component={Paper}>
-                    <Table aria-label="collapsible table">
-                        <TableHead>
-                            <TableRow>
-                                <TableCell align="center">Sunday</TableCell>
-                                <TableCell align="center">Monday</TableCell>
-                                <TableCell align="center">Tuesday</TableCell>
-                                <TableCell align="center">Wednesday</TableCell>
-                                <TableCell align="center">Thursday</TableCell>
-                                <TableCell align="center">Friday</TableCell>
-                                <TableCell align="center">Saturday</TableCell>
+                    <Table className="table-agenda" aria-label="collapsible table">
+                        <TableHead className="table-head-agenda">
+                            <TableRow className="table-row-agenda">
+                                <TableCell className="table-cell-agenda" align="center">Sunday</TableCell>
+                                <TableCell className="table-cell-agenda" align="center">Monday</TableCell>
+                                <TableCell className="table-cell-agenda" align="center">Tuesday</TableCell>
+                                <TableCell className="table-cell-agenda" align="center">Wednesday</TableCell>
+                                <TableCell className="table-cell-agenda" align="center">Thursday</TableCell>
+                                <TableCell className="table-cell-agenda" align="center">Friday</TableCell>
+                                <TableCell className="table-cell-agenda" align="center">Saturday</TableCell>
                             </TableRow>
                         </TableHead>
-                        <TableBody>
+                        <TableBody className="table-body-agenda">
                         {projectsTable.map((pro,i)=>{
                             
                             return ( 
-                            <TableRow key={i}>
+                            <TableRow key={i} className="table-row-agenda">
                                 
                                 {numbers.map((num,j)=>{
                                    return ( 
-                                   <TableCell key={j} style={{ verticalAlign: 'top' }}  padding="none" size="medium">
+                                   <TableCell className="table-cell-agenda" key={j} style={{ verticalAlign: 'top' }}  padding="none" size="medium">
                                        
                                         <Card >
                                         <Card.Header style={{ textAlign: 'center' }}>
@@ -163,16 +163,11 @@ export default function AgendaScreen() {
                                             </Button>
                                             )
                                         })}
-                                        {/* <IconButton aria-label="delete">
-                                        <SvgIcon> */}
                                         <Link to="/createproject" style={{textDecoration: 'none', color:'grey'}}>
                                             <AddCircleOutlineOutlinedIcon  ></AddCircleOutlineOutlinedIcon>
                                         </Link>
-                                        {/* </SvgIcon>
-                                        </IconButton> */}
                                         </Card.Body>
                                         </Card>
-                                        
                                    </TableCell> )
                                 })}
                                 

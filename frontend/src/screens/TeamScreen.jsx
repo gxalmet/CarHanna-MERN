@@ -94,7 +94,7 @@ export default function TeamScreen () {
                     </Form> )
                 }
                 { collegues.length > 0 &&
-                    <Collegues collegues={collegues}></Collegues>
+                    <Collegues collegues={collegues} userId={team.user_id}></Collegues>
                 }
                 {/* <Button  variant="primary" block type="submit" onClick={createTeam}>
                     Add collegue

@@ -283,6 +283,10 @@ export default function MainNav() {
                           <ListItemIcon><ChatIcon /></ListItemIcon>
                           <ListItemText primary="Chat"/>
                         </ListItem>
+                        <ListItem button key="chatdev" onClick={()=>navigate('/chatdev')} className={classes.listMenu}>
+                          <ListItemIcon><ChatIcon /></ListItemIcon>
+                          <ListItemText primary="Chat Device"/>
+                        </ListItem>
                       {/* </Link> */}
                       {/* <Link to="/userprofile" style={{textDecoration: 'none', color:'grey'}}> */}
                       <ListItem button key="profile" onClick={()=>navigate('/userprofile')} className={classes.listMenu}>

@@ -110,20 +110,20 @@ export default function CalendarScreen() {
                         <TableBody>
                             {projectsCalendar.map((line,i)=>{
                                 return (
-                                <TableRow key={i} style={{border: '1px solid grey'}}>
+                                <TableRow key={i} style={{border: '3px solid grey'}}>
                                     {Object.entries(line).map((days,k)=>{
                                         if(Object.entries(days['1'].project).length > 0){
                                             if(days['1'].colspan){
                                                 
                                                 return ( 
-                                                <TableCell key={k} colSpan={days['1'].colspan} >
-                                                    <Button variant="secondary" block >
-                                                        {days['1'].project.name} 
-                                                    </Button>
-                                                </TableCell>)
+                                                    <TableCell key={k} colSpan={days['1'].colspan} style={{border: '3px solid grey'}}>
+                                                        <Button variant="secondary" block >
+                                                            {days['1'].project.name} 
+                                                        </Button>
+                                                    </TableCell>)
                                             }else{
                                             
-                                                return ( <React.Fragment key={k}></React.Fragment>)
+                                                return ( <React.Fragment key={k} style={{border: '3px solid grey'}}></React.Fragment>)
                                             }
                                             
                                         }else{

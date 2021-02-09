@@ -5,7 +5,7 @@ React,
 //    useEffect 
 } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-
+import Grid from '@material-ui/core/Grid';
 import TableRow from '@material-ui/core/TableRow';
 //import Typography from '@material-ui/core/Typography';
 import TableCell from '@material-ui/core/TableCell';
@@ -57,14 +57,24 @@ export default function RowComp(props) {
             </IconButton>
           </TableCell>
           <TableCell component="th" scope="row">
-            <Button variant="secondary" block onClick={navigateToPorject}>
-              {row.name}
+            <Button variant="secondary" block onClick={navigateToPorject} >
+            <Grid container spacing={3}>
+                <Grid item xs={3}>{row.name}</Grid>
+                <Grid item xs={3}>{new Date(row.begin_date).toLocaleString("en-GB", {
+                  weekday: 'short',
+                  day: "numeric",
+                  month: "short",
+                  year: "numeric", })}</Grid>
+                <Grid item xs={3}>{new Date(row.end_date).toLocaleString("en-GB", {
+                  weekday: 'short',
+                  day: "numeric",
+                  month: "short",
+                  year: "numeric", })}</Grid>
+                <Grid item xs={3}>{statusDescription(row.status)}</Grid>
+              </Grid>
             </Button> 
-            {/* <Link to={'/editproject' + row._id} >
-                {row.name}
-            </Link>   */}
           </TableCell>
-          <TableCell align="right">{new Date(row.begin_date).toLocaleString("en-GB", {
+          {/* <TableCell align="right">{new Date(row.begin_date).toLocaleString("en-GB", {
                                             weekday: 'short',
                                             day: "numeric",
                                             month: "short",
@@ -74,7 +84,7 @@ export default function RowComp(props) {
                                             day: "numeric",
                                             month: "short",
                                             year: "numeric", })}</TableCell>
-          <TableCell align="right">{statusDescription(row.status)}</TableCell>
+          <TableCell align="right">{statusDescription(row.status)}</TableCell> */}
         </TableRow>
         { row.child && 
           row.child.length > 0 &&

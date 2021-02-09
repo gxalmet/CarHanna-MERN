@@ -7,6 +7,8 @@ React,
 import Grid from '@material-ui/core/Grid';
 import {Button} from 'react-bootstrap';
 import Typography from '@material-ui/core/Typography';
+import { useHistory } from 'react-router-dom';
+
 
 import 
 { 
@@ -16,7 +18,7 @@ import
 import { searchProjects } from '../actions/projectActions';
 import { makeStyles } from '@material-ui/core/styles';
 //import Box from '@material-ui/core/Box';
-import Screams from '../components/Screams';
+//import ScreamsScreen from './ScreamsScreen';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -45,11 +47,11 @@ const useStyles = makeStyles((theme) => ({
   }));
 
   export default function ChatScreen() {
-
+    const history = useHistory();
     const classes = useStyles();
 
     const [projectsChat, setProjectsChat] = useState([]);
-    const [projectSelected, setProjectSelected] = useState({});
+    //const [projectSelected, setProjectSelected] = useState({});
     const dispatch = useDispatch();
     const projectList = useSelector( (state) => state.projectsSearch);
     const { 
@@ -61,7 +63,10 @@ const useStyles = makeStyles((theme) => ({
 
     const selectProject = (project) => {
         
-        setProjectSelected(project);
+        //setProjectSelected(project);
+        var ref = '/screams' + project._id;
+        history.push(ref);  
+
     }
     
     useEffect(() => {
@@ -78,6 +83,7 @@ const useStyles = makeStyles((theme) => ({
 
     return (
         
+        
     <Grid container className={classes.root}>
         <Grid container >
             <Grid item xs={12}>
@@ -85,19 +91,19 @@ const useStyles = makeStyles((theme) => ({
                     My Chats
                 </Typography>
                 <Grid container justify="center"  >
-                    <Grid item xs={3} className={classes.header}>
+                    <Grid item xs={9} className={classes.header}>
                         <Typography variant="h5"   style={{textAlign:'center'}}> 
                             Projects
                         </Typography>
                     </Grid>
-                    <Grid item xs={7} className={classes.header}>
+                    {/* <Grid item xs={7} className={classes.header}>
                         <Typography variant="h5" style={{textAlign:'center'}}> 
                             Chats: {projectSelected.name}
                         </Typography>
-                    </Grid>
+                    </Grid> */}
                 </Grid>
                 <Grid container justify="center" >
-                    <Grid item xs={3} className={classes.projectList} >
+                    <Grid item xs={9} className={classes.projectList} >
                         { projectsChat.map((pro,l)=>{
                             return ( 
                             <Grid key={l} item xs={12} style={{ width:'100rem'}}>
@@ -107,11 +113,11 @@ const useStyles = makeStyles((theme) => ({
                             </Grid> )
                         })}
                     </Grid>
-                    {projectSelected &&
+                    {/* {projectSelected &&
                         <Grid item xs={7} style={{border: '.2rem solid #f5f5f5'}}>
-                            <Screams projectSel = {projectSelected}></Screams>
+                            <ScreamsScreen projectSel = {projectSelected}></ScreamsScreen>
                         </Grid>
-                    }                    
+                    }                     */}
                 </Grid>
             </Grid>
         </Grid>

@@ -14,6 +14,7 @@ import TableBody from '@material-ui/core/TableBody';
 import Paper from '@material-ui/core/Paper';
 import { search } from '../actions/userActions';
 import { updateTeam } from '../actions/teamActions';
+//import { Container } from '@material-ui/core';
 
 function AddCollegue(props) {
 
@@ -34,9 +35,9 @@ function AddCollegue(props) {
         dispatch(updateTeam(team._id, team.name, team.collegues));
     }
 
-    return (
+    return (   
         <Grid item xs={11}>
-            <Typography variant="h5" align="center" > 
+            <Typography variant="h6" align="center" style={{ paddingTop: '5rem'}}> 
                 Search users to add to your team
             </Typography>
             { loading && ( <LoadingBox mes ='Searching users'></LoadingBox> ) }
@@ -83,6 +84,7 @@ function AddCollegue(props) {
             }
 
         </Grid>
+        
     )
 } 
 

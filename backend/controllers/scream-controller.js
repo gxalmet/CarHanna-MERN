@@ -34,7 +34,7 @@ var screamController = {
 
         var screamId = req.params.id;
         var mes = { authorUsername: req.body.userId, content: req.body.content, createdAt: new Date(Date.now()) };
-        var message = { $each: [mes] };
+        //var message = { $each: [mes] };
         var querySearch = { "_id": screamId };
         var queryInsert = {
             $push: {
@@ -50,8 +50,11 @@ var screamController = {
             const screamUpdate = await Scream.findById(querySearch).populate('messages.authorUsername');
 
             return res.status(200).send(screamUpdate);
+
         } catch (error) {
+
             return res.status(404).send({ message: error.mes });
+
         }
     },
     delete: async function(req, res) {

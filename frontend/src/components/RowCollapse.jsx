@@ -44,21 +44,6 @@ export default function RowCollapse (props) {
                         <Table size="small" aria-label="purchases">
                             <TableBody>
                                 <RowComp key={project._id} row={project} />
-                                {/* <TableRow>
-                                    <TableCell>
-                                        <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
-                                            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-                                        </IconButton>
-                                    </TableCell>
-                                    <TableCell component="th" scope="row">
-                                        <Link to={'/editproject' + project._id} >
-                                            {project.name}
-                                        </Link>  
-                                    </TableCell>
-                                    <TableCell align="right">{convertDate(project.begin_date)}</TableCell>
-                                    <TableCell align="right">{convertDate(project.end_date)}</TableCell>
-                                    <TableCell align="right">{statusDescription(project.status)}</TableCell>
-                                </TableRow>  */}
                             </TableBody>
                         </Table>
                     </Box>
@@ -69,26 +54,4 @@ export default function RowCollapse (props) {
 };
 
 
- /* <TableRow>
-    <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        <Box margin={1}>
-          <Table size="small" aria-label="purchases">
-            <TableBody>
-              {row.child.map((childRow) => (
-                <TableRow key={childRow._id}>
-                  <TableCell component="th" scope="row">
-                    {childRow.name}
-                  </TableCell>
-                  <TableCell>{convertDate(childRow.begin_date)}</TableCell>
-                  <TableCell align="right">{convertDate(childRow.end_date)}</TableCell>
-                  <TableCell align="right">{statusDescription(childRow.status)}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </Box>
-      </Collapse>
-    </TableCell>
-  </TableRow> 
-  */
+
