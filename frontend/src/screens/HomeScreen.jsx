@@ -17,7 +17,13 @@ import ChatIcon from '@material-ui/icons/Chat';
 // import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 // import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import CreateNewFolderIcon from '@material-ui/icons/CreateNewFolder';
-const HomeScreen = () => {
+import { useSelector } from 'react-redux';
+
+export default function HomeScreen() {
+
+    const userSignIn = useSelector((state)=>state.userSignIn);
+    const { userInfo } = userSignIn;
+
     return (
         <Grid 
             container 
@@ -34,7 +40,8 @@ const HomeScreen = () => {
                                     <Card.Title>Create projects</Card.Title>
                                     <Card.Subtitle className="mb-2 text-muted">Create projects</Card.Subtitle>
                                     <Card.Text>
-                                        Create your projects and managed your team...<Link to='/createproject'> here</Link> 
+                                        Create your projects and managed your team...
+                                        {userInfo ? (<Link to='/createproject'> here</Link> ) : (<Link to='/register'> here</Link> )}
                                     </Card.Text>
                                     
                                 </Card.Body>
@@ -49,7 +56,8 @@ const HomeScreen = () => {
                                     <Card.Title>Agenda</Card.Title>
                                     <Card.Subtitle className="mb-2 text-muted">Create projects</Card.Subtitle>
                                     <Card.Text>
-                                        Check your agenda in order to show your day targets ...<Link to='/agenda'> here</Link>
+                                        Check your agenda in order to show your day targets ...
+                                        {userInfo ? (<Link to='/agenda'> here</Link> ) : (<Link to='/register'> here</Link> )}
                                     </Card.Text>
 
                                 </Card.Body>
@@ -64,7 +72,8 @@ const HomeScreen = () => {
                                     <Card.Title>Calendar</Card.Title>
                                     <Card.Subtitle className="mb-2 text-muted">Create projects</Card.Subtitle>
                                     <Card.Text>
-                                        Check the calendar to manage your projects ...<Link to='/calendar'> here</Link>
+                                        Check the calendar to manage your projects ...
+                                        {userInfo ? (<Link to='/calendar'> here</Link> ) : (<Link to='/register'> here</Link> )}
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
@@ -90,6 +99,4 @@ const HomeScreen = () => {
             
         </Grid>
     );
-}
-
-export default HomeScreen;
+};

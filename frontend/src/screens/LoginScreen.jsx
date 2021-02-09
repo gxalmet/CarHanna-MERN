@@ -25,17 +25,11 @@ export default function LoginScreen(props) {
 
   useEffect(() => {
       if(userInfo){
-          // props.history.push(redirect);
+          
           props.history.push("/home");
       }
   }, [props.history, redirect, userInfo]);
-    // const classes = useStyles();
-    // const handleChange = (prop) => (event) => {
-    //     // setValues({ ...values, [prop]: event.target.value });
-    //   };
-    // const handleMouseDownPassword = (event) => {
-    //     event.preventDefault();
-    //   };
+
     return (
         <Grid 
             container 
@@ -68,44 +62,6 @@ export default function LoginScreen(props) {
                 </Form>
             </Grid>
         </Grid>
-        // <Grid>
-        //     <Card>
-        //         <CardContent>
-        //             <Typography component="h5" variant="h5">
-        //                 Login screen
-        //             </Typography>
-        //             <FormGroup>
-        //                 <FormControl>
-        //                     <InputLabel htmlFor="my-input">Email address</InputLabel>
-        //                     <Input id="my-input" aria-describedby="my-helper-text" />
-        //                     <FormHelperText id="my-helper-text">We'll never share your email.</FormHelperText>
-        //                 </FormControl>
-        //                 <FormControl className={clsx(classes.margin, classes.textField)} variant="filled">
-        //                     <InputLabel htmlFor="filled-adornment-password">Password</InputLabel>
-        //                     <FilledInput
-        //                         id="filled-adornment-password"
-        //                         // type={values.showPassword ? 'text' : 'password'}
-        //                         // value={values.password}
-        //                         onChange={handleChange('password')}
-        //                         endAdornment={
-        //                         <InputAdornment position="end">
-        //                             <IconButton
-        //                             aria-label="toggle password visibility"
-        //                             onClick={handleClickShowPassword}
-        //                             onMouseDown={handleMouseDownPassword}
-        //                             edge="end"
-        //                             >
-        //                             {/* {values.showPassword ? <Visibility /> : <VisibilityOff />} */}
-        //                             </IconButton>
-        //                         </InputAdornment>
-        //                         }
-        //                     />
-        //                     </FormControl>
-        //             </FormGroup>
-        //         </CardContent>
-        //     </Card>
-        // </Grid>
-        
     );
 }
 
