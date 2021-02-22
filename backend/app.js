@@ -32,11 +32,11 @@ app.use('/api/projects', projectRoutes);
 app.use('/api/team', teamRoutes);
 app.use('/api/scream', screamRoutes);
 
-const __dirname = path.resolve();
-app.use(express.static(path.join(__dirname, 'frontend/build')));
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '/frontend/build/index.html'));
-});
+// const __dirname = path.resolve();
+// app.use(express.static(path.join(__dirname, 'frontend/build')));
+// app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname, '/frontend/build/index.html'));
+// });
 
 //Export
 

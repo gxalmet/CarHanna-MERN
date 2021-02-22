@@ -37,7 +37,7 @@ var projectController = {
             });
         } catch (error) {
 
-            return res.status(500).send({ error: error.message });
+            return res.status(500).send({ message: error.message });
         }
     },
     read: async function(req, res) {

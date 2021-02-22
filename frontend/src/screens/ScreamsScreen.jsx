@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
       
     },
 
-  }));
+}));
 function ScreamsScreen(props) {
     const history = useHistory();
     const scrollRef = useRef();
@@ -69,6 +69,7 @@ function ScreamsScreen(props) {
     const scrollToBottom = () => {
         scrollRef.current.scrollIntoView({ behavior: 'smooth' })
     }
+
 
     return (
         <Grid container className={classes.root}>
