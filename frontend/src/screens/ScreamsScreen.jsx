@@ -1,19 +1,20 @@
-import { Grid, makeStyles } from '@material-ui/core'
+import { Grid, makeStyles, Typography } from '@material-ui/core'
 import React, { useEffect, useRef, useState } from 'react'
 import { useHistory } from 'react-router-dom';
 //import Typography from '@material-ui/core/Typography';
 import { useDispatch, useSelector } from 'react-redux';
 import { readScream } from '../actions/screamActions'
 
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Container } from 'react-bootstrap';
 
 import { updateScream } from '../actions/screamActions'
-import Typography from '@material-ui/core/Typography';
+//import Typography from '@material-ui/core/Typography';
 import ChatRow from '../components/ChatRow';
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
-      
+        height: '75vh',
+        overflowY:'scroll'
     },
 
 }));
@@ -72,18 +73,16 @@ function ScreamsScreen(props) {
 
 
     return (
-        <Grid container className={classes.root}>
-            <Grid container justify="center">
-                
-                <Typography variant="h5" align="center" > 
-                    My Chats
-                </Typography>
-                
-                <Grid container justify="center">
-                    <Grid item xs={9} >
-                        <Button variant="outline-secondary" block onClick={backToChats}>Back to chats</Button>
-                    </Grid>
-                    <Grid item xs={9} style={{ height:'35rem', overflowY:'scroll'}} >
+        <Container fluid>
+                <Container fluid xs={12} >
+                    <Typography variant="h5" align="center">Nombre del proyecto</Typography>
+                </Container>
+                <Container fluid xs={12} >
+                    <Button variant="outline-secondary" block onClick={backToChats}>Back to chats</Button>
+                </Container>
+                <Container fluid xs={12} className={classes.root}>
+
+                    <Container fluid >
                     
                         {   screamsList &&
                             screamsList.messages &&
@@ -96,10 +95,10 @@ function ScreamsScreen(props) {
                             })
                         }
                         <div ref={scrollRef} />
-                    </Grid>
-                </Grid>
+                    </Container>
+                </Container>
                 <Grid container justify="center">
-                    <Grid item xs={7} style={{ position: 'relative'}}>
+                    <Grid item xs={10} style={{ position: 'relative'}}>
                         <Form.Group controlId="formBasicDes">
                             <Form.Control  as="textarea" rows={1} value={content} onChange={(e)=>setContent(e.target.value)}/>
                         </Form.Group>
@@ -110,8 +109,8 @@ function ScreamsScreen(props) {
                         </Button>
                     </Grid>
                 </Grid>
-            </Grid>
-        </Grid>
+            
+        </Container>
     )
 }
 

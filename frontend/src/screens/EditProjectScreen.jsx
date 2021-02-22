@@ -120,12 +120,12 @@ export default function EditProjectScreen(props) {
                         <Form.Group controlId="formBasicBegin">
                             <Row>
                                 <Col>
-                                <Form.Label>Begin Date</Form.Label>
-                                <Form.Control type="date" defaultValue={begin_date} onChange={(e)=>setBegin_date(e.target.value)}/>
+                                    <Form.Label>Begin Date</Form.Label>
+                                    <Form.Control type="date" defaultValue={begin_date} onChange={(e)=>setBegin_date(e.target.value)}/>
                                 </Col>
                                 <Col>
-                                <Form.Label>End Date</Form.Label>
-                                <Form.Control type="date" defaultValue={end_date} onChange={(e)=>setEnd_date(e.target.value)}/>
+                                    <Form.Label>End Date</Form.Label>
+                                    <Form.Control type="date" defaultValue={end_date} onChange={(e)=>setEnd_date(e.target.value)}/>
                                 </Col>
                             </Row>
                         </Form.Group>

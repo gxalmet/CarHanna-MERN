@@ -23,7 +23,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-      flexGrow: 1,
+      flexGrow: 1
     },
     // paper: {
     //   height: 140,
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     },
     projectList: {
     //    border: '.1rem solid #f5f5f5', 
-        height: '40rem', 
+        height: '75vh', 
         overflow:'scroll' 
     },
     control: {
@@ -85,7 +85,7 @@ const useStyles = makeStyles((theme) => ({
         
         
     <Grid container className={classes.root}>
-        <Grid container >
+        <Grid container justify="center"  >
             <Grid item xs={12}>
                 <Typography variant="h5" align="center" > 
                     My Chats

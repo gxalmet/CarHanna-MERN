@@ -95,6 +95,6 @@ export const readScream = (projectId) => async(dispatch, getState) => {
 }
 export const deleteProject = (id) => async(dispatch, getState) => {
 
-    const { userSignIn: { userInfo } } = getState();
+    //const { userSignIn: { userInfo } } = getState();
 
 }
