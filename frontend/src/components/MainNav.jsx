@@ -46,6 +46,7 @@ import CreateNewFolderIcon from '@material-ui/icons/CreateNewFolder';
 import AccessibilityIcon from '@material-ui/icons/Accessibility';
 import InputTwoToneIcon from '@material-ui/icons/InputTwoTone';
 import GroupWorkIcon from '@material-ui/icons/GroupWork';
+//import { Container } from '@material-ui/core';
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
@@ -178,9 +179,9 @@ export default function MainNav() {
     
 
     return (
-        <React.Fragment>
+        <div className={classes.root}>
             <AppBar
-                position="fixed"
+                position="static"
                 className={clsx(classes.appBar, { [classes.appBarShift]: open, })}
                 color="inherit">
                 <Toolbar>
@@ -196,13 +197,10 @@ export default function MainNav() {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h5" className={classes.title} onClick={()=>navigate('/home')}> 
-                      {/* <Link to="/home" className={classes.link} style={{textDecoration: 'none', color:'grey'}}> */}
                         CARHANNA
-                        {/* </Link>   */}
                     </Typography>
 
                     { userInfo &&  ( 
-                      // <div>
                         <IconButton
                           aria-label="account of current user"
                           aria-controls="menu-appbar"
@@ -213,10 +211,7 @@ export default function MainNav() {
                             
                           <AccountCircle placeholder={userInfo.name}></AccountCircle>
                          </IconButton>
-
-                    // </div>
                     ) }
-                    
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -239,46 +234,33 @@ export default function MainNav() {
               </div>
               <Divider />
               <List>
-                {/* <Link to="/home" style={{textDecoration: 'none', color:'grey'}}> */}
                   <ListItem button key="home" onClick={()=>navigate('/home')} className={classes.listMenu}>
                     <ListItemIcon><HomeIcon /></ListItemIcon>
                     <ListItemText primary="Home"/>
                   </ListItem>
-                {/* </Link> */}
                 {
                   userInfo ? (
                     <React.Fragment>
-                        {/* <Link to="/team" style={{textDecoration: 'none', color:'grey'}}> */}
                         <ListItem button key="team" onClick={()=>navigate('/team')} className={classes.listMenu}>
                           <ListItemIcon><GroupWorkIcon /></ListItemIcon>
                           <ListItemText primary="My team"/>
                         </ListItem>
-                        {/* </Link>  */}
-                      {/* <Link to="/projects" style={{textDecoration: 'none', color:'grey'}}> */}
                         <ListItem button key="project" onClick={()=>navigate('/projects')} className={classes.listMenu}>
                           <ListItemIcon><ListIcon/></ListItemIcon>
                           <ListItemText primary="Projects" style={{ color:'grey'}}></ListItemText>
                         </ListItem>
-                      {/* </Link> */}
-                      {/* <Link to="/createproject" style={{textDecoration: 'none', color:'grey'}}> */}
                         <ListItem button key="createproject" onClick={()=>navigate('/createproject')} className={classes.listMenu}>
                           <ListItemIcon><CreateNewFolderIcon /></ListItemIcon>
                           <ListItemText primary="Create project"/>
                         </ListItem>
-                      {/* </Link> */}
-                      {/* <Link to="/agenda" style={{textDecoration: 'none', color:'grey'}}> */}
                         <ListItem button key="agenda" onClick={()=>navigate('/agenda')} className={classes.listMenu}>
                           <ListItemIcon><ViewAgendaIcon /></ListItemIcon>
                           <ListItemText primary="Agenda"/>
                         </ListItem>
-                      {/* </Link> */}
-                      {/* <Link to="/calendar" style={{textDecoration: 'none', color:'grey'}}> */}
                         <ListItem button key="calendar" onClick={()=>navigate('/calendar')} className={classes.listMenu}>
                           <ListItemIcon><CalendarViewDayIcon /></ListItemIcon>
                           <ListItemText primary="Calendar"/>
                         </ListItem>
-                      {/* </Link> */}
-                      {/* <Link to="/chat" style={{textDecoration: 'none', color:'grey'}}> */}
                         <ListItem button key="chat" onClick={()=>navigate('/chat')} className={classes.listMenu}>
                           <ListItemIcon><ChatIcon /></ListItemIcon>
                           <ListItemText primary="Chat"/>
@@ -287,14 +269,10 @@ export default function MainNav() {
                           <ListItemIcon><ChatIcon /></ListItemIcon>
                           <ListItemText primary="Chat Device"/>
                         </ListItem>
-                      {/* </Link> */}
-                      {/* <Link to="/userprofile" style={{textDecoration: 'none', color:'grey'}}> */}
                       <ListItem button key="profile" onClick={()=>navigate('/userprofile')} className={classes.listMenu}>
                         <ListItemIcon><AssignmentIndIcon /></ListItemIcon>
-                        
                         <ListItemText primary={user}/>
                       </ListItem>
-                      {/* </Link> */}
                       <ListItem button key="signout" onClick={signOutHandler} className={classes.listMenu}>
                         <ListItemIcon><ExitToAppIcon /></ListItemIcon>
                         <ListItemText primary="Sign Out"/>
@@ -303,26 +281,21 @@ export default function MainNav() {
                   ) : 
                   (
                     <React.Fragment>
-                      {/* <Link to="/login" style={{textDecoration: 'none', color:'grey'}}> */}
                       <ListItem button key="login" onClick={()=>navigate('/login')}>
                         <ListItemIcon><AccessibilityIcon /></ListItemIcon>
                         <ListItemText primary="Login"/>
                       </ListItem>
-                      {/* </Link> */}
-                      {/* <Link to="/register" style={{textDecoration: 'none', color:'grey'}}> */}
                       <ListItem button key="register" onClick={()=>navigate('/register')}>
                         <ListItemIcon>< InputTwoToneIcon/></ListItemIcon>
                         <ListItemText primary="Register"/>
                       </ListItem>
-                      {/* </Link> */}
                     </React.Fragment>
                   )
                 }
 
               </List>
-              {/* <Divider />*/}
             </Drawer>
-            </React.Fragment>
+            </div>
     );
 }
 

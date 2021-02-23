@@ -1,5 +1,5 @@
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
+//import Grid from '@material-ui/core/Grid';
 //import Typography from '@material-ui/core/Typography';
 import { 
 //    Form, 
@@ -25,15 +25,11 @@ export default function HomeScreen() {
     const { userInfo } = userSignIn;
 
     return (
-        <Grid 
-            container 
-            direction="row"
-            justify="center"
-            alignItems="center">
+        <Container fluid>
 
-                <Container>
+                <Container xs={12}>
                     <Row>
-                        <Col xs={12} md={12} style={{padding: "2rem"}}>
+                        <Col style={{padding: "2rem"}}>
                             <Card >
                                 <Card.Body>
                                     <CreateNewFolderIcon />
@@ -47,9 +43,7 @@ export default function HomeScreen() {
                                 </Card.Body>
                             </Card>
                         </Col>
-                    </Row>
-                    <Row>
-                        <Col xs={12} md={12} style={{padding: "2rem"}}>                    
+                        <Col  style={{padding: "2rem"}}>                    
                             <Card >
                                 <Card.Body>
                                     <ViewAgendaIcon />
@@ -65,7 +59,10 @@ export default function HomeScreen() {
                         </Col> 
                     </Row>
                     <Row>
-                        <Col xs={12} md={12} style={{padding: "2rem"}}>                     
+
+                    </Row>
+                    <Row>
+                        <Col style={{padding: "2rem"}}>                     
                             <Card >
                                 <Card.Body>
                                     <CalendarViewDayIcon />
@@ -78,9 +75,7 @@ export default function HomeScreen() {
                                 </Card.Body>
                             </Card>
                         </Col>  
-                    </Row>
-                    <Row>
-                        <Col xs={12} md={12} style={{padding: "2rem"}}>                     
+                        <Col style={{padding: "2rem"}}>                     
                             <Card >
                                 <Card.Body>
                                     <ChatIcon />
@@ -94,10 +89,13 @@ export default function HomeScreen() {
                             </Card>
                         </Col>  
                     </Row>
+                    <Row>
+
+                    </Row>
                 </Container>
                 
                 
             
-        </Grid>
+        </Container>
     );
 };

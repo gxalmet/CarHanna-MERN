@@ -4,8 +4,8 @@ React,
     useState, 
     useEffect 
 } from 'react';
-import Grid from '@material-ui/core/Grid';
-import {Button} from 'react-bootstrap';
+//import Grid from '@material-ui/core/Grid';
+import {Button, Container, Row, Col} from 'react-bootstrap';
 import Typography from '@material-ui/core/Typography';
 import { useHistory } from 'react-router-dom';
 
@@ -84,44 +84,37 @@ const useStyles = makeStyles((theme) => ({
     return (
         
         
-    <Grid container className={classes.root}>
-        <Grid container justify="center"  >
-            <Grid item xs={12}>
+    <Container fluid xs={12} >
+        <Row>
+            <Col>
                 <Typography variant="h5" align="center" > 
                     My Chats
                 </Typography>
-                <Grid container justify="center"  >
-                    <Grid item xs={9} className={classes.header}>
-                        <Typography variant="h5"   style={{textAlign:'center'}}> 
-                            Projects
-                        </Typography>
-                    </Grid>
-                    {/* <Grid item xs={7} className={classes.header}>
-                        <Typography variant="h5" style={{textAlign:'center'}}> 
-                            Chats: {projectSelected.name}
-                        </Typography>
-                    </Grid> */}
-                </Grid>
-                <Grid container justify="center" >
-                    <Grid item xs={9} className={classes.projectList} >
-                        { projectsChat.map((pro,l)=>{
-                            return ( 
-                            <Grid key={l} item xs={12} style={{ width:'100rem'}}>
-                                <Button key={l} variant="outline-secondary" block onClick={()=>selectProject(pro)}>
-                                    {pro.name}
-                                </Button>
-                            </Grid> )
-                        })}
-                    </Grid>
-                    {/* {projectSelected &&
-                        <Grid item xs={7} style={{border: '.2rem solid #f5f5f5'}}>
-                            <ScreamsScreen projectSel = {projectSelected}></ScreamsScreen>
-                        </Grid>
-                    }                     */}
-                </Grid>
-            </Grid>
-        </Grid>
-    </Grid>  
+            </Col>
+        </Row>
+        <Row>
+            <Col>
+                <Typography variant="h5" align="center" className={classes.header}> 
+                    Projects
+                </Typography>
+            </Col>
+        </Row>
+            
+ 
+        { projectsChat.map((pro,l)=>{
+            return ( 
+            <Row key={l} xs={12} >
+                <Col>
+                <Button key={l} variant="outline-secondary" block onClick={()=>selectProject(pro)}>
+                    {pro.name}
+                </Button>
+                </Col>
+            </Row> )
+        })}
+
+            
+
+    </Container>  
         
     );
 }

@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { readScream } from '../actions/screamActions'
 
-import { Form, Button, Container } from 'react-bootstrap';
+import { Form, Button, Container, Card } from 'react-bootstrap';
 
 import { updateScream } from '../actions/screamActions'
 //import Typography from '@material-ui/core/Typography';
@@ -74,9 +74,11 @@ function ScreamsScreen(props) {
 
     return (
         <Container fluid>
-                <Container fluid xs={12} >
-                    <Typography variant="h5" align="center">Nombre del proyecto</Typography>
-                </Container>
+                <Card >
+                    <Typography variant="h5" align="center" > 
+                        Proyecto
+                    </Typography>
+                </Card>
                 <Container fluid xs={12} >
                     <Button variant="outline-secondary" block onClick={backToChats}>Back to chats</Button>
                 </Container>

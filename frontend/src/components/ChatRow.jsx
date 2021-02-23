@@ -48,15 +48,15 @@ export default function ChatRow(props) {
             <br></br>
             { userInfo._id === mes.authorUsername._id ? 
                 ( 
-                    <Grid fluid xs={12}  align="end" style={{ textAlign:'left'}} className={classes.message}>
+                    <Grid item xs={12}  align="end" style={{ textAlign:'left'}} className={classes.message}>
                         <Typography variant="body2" align="left"  style={{ padding:'.5rem'}} > 
                         {mes.content}
                         </Typography>
                     </Grid>
                 ) : (
-                    <Grid fluid xs={12}  align="end" style={{ textAlign:'right'}} className={classes.message}>
+                    <Grid item xs={12}  align="end" style={{ textAlign:'right'}} className={classes.message}>
                         <Typography variant="body2" align="right"  style={{ padding:'.5rem'}}> 
-                        {mes.content}
+                            {mes.content}
                         </Typography>
                     </Grid>
                 ) 

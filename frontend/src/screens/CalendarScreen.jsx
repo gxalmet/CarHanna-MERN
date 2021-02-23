@@ -87,11 +87,11 @@ export default function CalendarScreen() {
             direction="row"
             justify="center"
             alignItems="center">
-            <Grid item xs={11}>
+            <Grid item xs={12}>
                 <Typography variant="h5" align="center" > 
                     Calendar
                 </Typography>
-                <TableContainer component={Paper} style={{width:'100rem'}}>
+                <TableContainer component={Paper} >
                     <Table aria-label="collapsible table">
                         <TableHead>
                             <TableRow>
@@ -123,7 +123,7 @@ export default function CalendarScreen() {
                                                     </TableCell>)
                                             }else{
                                             
-                                                return ( <React.Fragment key={k} style={{border: '3px solid grey'}}></React.Fragment>)
+                                                return ( <React.Fragment key={k} ></React.Fragment>)
                                             }
                                             
                                         }else{

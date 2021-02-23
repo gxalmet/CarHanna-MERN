@@ -9,27 +9,28 @@ import
 } 
 from 'react-bootstrap';
 
-import { makeStyles } from '@material-ui/core/styles';
+//import { makeStyles } from '@material-ui/core/styles';
 
-import Grid from '@material-ui/core/Grid';
+//import Grid from '@material-ui/core/Grid';
 
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-      flexGrow: 1,
-    },
-    paper: {
-      padding: theme.spacing(4),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-    },
-  }));
+import { Container, Card } from 'react-bootstrap';
+import Typography from '@material-ui/core/Typography';
+// const useStyles = makeStyles((theme) => ({
+//     root: {
+//       flexGrow: 1,
+//     },
+//     paper: {
+//       padding: theme.spacing(4),
+//       textAlign: 'center',
+//       color: theme.palette.text.secondary,
+//     },
+// }));
 
 export default function UserProfileScreen(props) {
 
-    const classes = useStyles();
+    //const classes = useStyles();
 
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
@@ -75,59 +76,57 @@ export default function UserProfileScreen(props) {
         }  
     }
     return (
-        <div className={classes.root}>
-            <Grid 
-                container 
-                // spacing={3}   
-                direction="row"
-                justify="center"
-                alignItems="center">
-                <Grid item xs={6}>
-                    <Form className="form" onSubmit={submitHandler}>
-                        { loading && ( <LoadingBox>Loading...</LoadingBox> )}
-                        { error && ( <MessageBox variant='danger'>{error}</MessageBox> ) }
-                        { errorPass && ( <MessageBox variant='danger'>{errorPass}</MessageBox> ) }
-                        { successState && ( <MessageBox variant='info'>Profile Saved</MessageBox> ) }
-                        <Form.Group>
-                            <Form.Label>Email address</Form.Label>
-                            <Form.Control 
-                                type="email" 
-                                defaultValue = {email} 
-                                onChange={(e)=>setEmail(e.target.value)}/>
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Name</Form.Label>
-                            <Form.Control 
-                                type="text" 
-                                defaultValue = {name} 
-                                onChange={(e)=>setName(e.target.value)}/>
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Surname</Form.Label>
-                            <Form.Control 
-                                type="text" 
-                                defaultValue = {surname} 
-                                onChange={(e)=>setSurname(e.target.value)}/>
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control 
-                                type="password" 
-                                onChange={(e)=>setPassword(e.target.value)}/>
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Confirm Password</Form.Label>
-                            <Form.Control 
-                                type="password" 
-                                onChange={(e)=>setConfirmPassword(e.target.value)}/>
-                        </Form.Group>
-                        <Button  variant="primary" block type="submit">
-                            Submit
-                        </Button>
-                    </Form>
-                </Grid>
-            </Grid>
-        </div>
+        <Container fluid>
+            <Container fluid xs={12}>
+                <Card >
+                    <Typography variant="h5" align="center" > 
+                        User Profile
+                    </Typography>
+                </Card>
+                <Form className="form" onSubmit={submitHandler}>
+                    { loading && ( <LoadingBox>Loading...</LoadingBox> )}
+                    { error && ( <MessageBox variant='danger'>{error}</MessageBox> ) }
+                    { errorPass && ( <MessageBox variant='danger'>{errorPass}</MessageBox> ) }
+                    { successState && ( <MessageBox variant='info'>Profile Saved</MessageBox> ) }
+                    <Form.Group>
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control 
+                            type="email" 
+                            defaultValue = {email} 
+                            onChange={(e)=>setEmail(e.target.value)}/>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Name</Form.Label>
+                        <Form.Control 
+                            type="text" 
+                            defaultValue = {name} 
+                            onChange={(e)=>setName(e.target.value)}/>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Surname</Form.Label>
+                        <Form.Control 
+                            type="text" 
+                            defaultValue = {surname} 
+                            onChange={(e)=>setSurname(e.target.value)}/>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control 
+                            type="password" 
+                            onChange={(e)=>setPassword(e.target.value)}/>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Confirm Password</Form.Label>
+                        <Form.Control 
+                            type="password" 
+                            onChange={(e)=>setConfirmPassword(e.target.value)}/>
+                    </Form.Group>
+                    <Button  variant="primary" block type="submit">
+                        Submit
+                    </Button>
+                </Form>
+            </Container>
+        </Container>
     );
 }
 

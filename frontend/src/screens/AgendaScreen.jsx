@@ -15,7 +15,7 @@ import { searchProjects } from '../actions/projectActions';
 import { getFirstDate, getlastDate, buildAgenda, convertDate } from '../utils/utils';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import { Form, Col, Button, Card } from 'react-bootstrap';
+import { Form, Col, Button, Card, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import Table from '@material-ui/core/Table';
@@ -82,13 +82,8 @@ export default function AgendaScreen() {
     // }
     
     return (
-        <Grid 
-            container 
-            // spacing={3}   
-            direction="row"
-            justify="center"
-            alignItems="center">
-            <Grid item xs={11}>
+        <Container fluid>
+            <Grid item xs={12}>
                 <Card >
                     <Card.Body>
                         <Typography variant="h5" align="center" > 
@@ -120,7 +115,7 @@ export default function AgendaScreen() {
                     </Card.Body>
                 </Card>
             </Grid>
-            <Grid item xs={11}>
+            <Grid item xs={12}>
             
                 <Card>
                 <Card.Body>
@@ -179,7 +174,7 @@ export default function AgendaScreen() {
                 </Card.Body>
                 </Card>
             </Grid>
-        </Grid>
+        </Container>
     );
 }
 

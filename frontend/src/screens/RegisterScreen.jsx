@@ -6,8 +6,8 @@ import { register } from '../actions/userActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 //import './RegisterScreen.css';
-import { Form, Button } from 'react-bootstrap';
-import Grid from '@material-ui/core/Grid';
+import { Form, Button, Container } from 'react-bootstrap';
+//import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
 export default function RegisterScreen(props) {
@@ -44,13 +44,8 @@ export default function RegisterScreen(props) {
 
     return (
 
-        <Grid 
-            container 
-            // spacing={3}   
-            direction="row"
-            justify="center"
-            alignItems="center">
-            <Grid item xs={9}>
+        <Container fluid>
+            <Container fluid xs={12}>
                 <Typography variant="h5" align="center" > 
                     Register
                 </Typography>
@@ -85,7 +80,7 @@ export default function RegisterScreen(props) {
                         Submit
                     </Button>
                 </Form>
-            </Grid>
-        </Grid>
+            </Container>
+        </Container>
     );
 }
