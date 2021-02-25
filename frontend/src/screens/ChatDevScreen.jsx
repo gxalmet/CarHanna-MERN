@@ -72,6 +72,7 @@ const useStyles = makeStyles((theme) => ({
     useEffect(() => {
         if(loading === false){
             if(projects){
+                console.log(projects);
                 setProjectsChat(projects);
             }else{
                 dispatch(searchProjects(null,null, false));
@@ -81,9 +82,7 @@ const useStyles = makeStyles((theme) => ({
         } 
     }, [dispatch, loading, projects]);
 
-    return (
-        
-        
+    return (   
     <Container fluid xs={12} >
         <Row>
             <Col>
@@ -99,8 +98,6 @@ const useStyles = makeStyles((theme) => ({
                 </Typography>
             </Col>
         </Row>
-            
- 
         { projectsChat.map((pro,l)=>{
             return ( 
             <Row key={l} xs={12} >
@@ -111,9 +108,6 @@ const useStyles = makeStyles((theme) => ({
                 </Col>
             </Row> )
         })}
-
-            
-
     </Container>  
         
     );

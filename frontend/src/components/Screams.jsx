@@ -65,35 +65,64 @@ function ScreamsScreen(props) {
     }
 
     return (
+        // <Grid className={classes.root}>
+        //     <Grid container >
+        //         <Grid item xs={12} style={{ padding:'1rem', height:'35rem', overflowY:'scroll'}} >
+        //             {   screamsList &&
+        //                 screamsList.messages &&
+        //                 screamsList.messages.map((mes,i)=>{
+        //                     return ( 
+        //                     <React.Fragment key={i}>
+        //                         <ChatRow key={i} mes={mes}> 
+        //                         </ChatRow> <br></br> 
+        //                     </React.Fragment> );
+        //                 })
+        //             }
+        //             <div ref={scrollRef} />
+        //         </Grid>
+        //     </Grid>
+        //     <Grid container>
+        //         <Grid item xs={10} style={{ position: 'relative'}}>
+        //             <Form.Group controlId="formBasicDes">
+        //                 <Form.Control  as="textarea" rows={2} value={content} onChange={(e)=>setContent(e.target.value)}/>
+        //             </Form.Group>
+        //         </Grid>
+        //         <Grid item xs={2} style={{ position: 'relative'}}>
+        //             <Button variant="outline-secondary" onClick={(e)=>sendScream(e)}>
+        //                 Send
+        //             </Button>
+        //         </Grid>
+        //     </Grid>
+        // </Grid>
         <Grid className={classes.root}>
-            <Grid container >
-                <Grid item xs={12} style={{ padding:'1rem', height:'35rem', overflowY:'scroll'}} >
-                    {   screamsList &&
-                        screamsList.messages &&
-                        screamsList.messages.map((mes,i)=>{
-                            return ( 
-                            <React.Fragment key={i}>
-                                <ChatRow key={i} mes={mes}> 
-                                </ChatRow> <br></br> 
-                            </React.Fragment> );
-                        })
-                    }
-                    <div ref={scrollRef} />
-                </Grid>
-            </Grid>
-            <Grid container>
-                <Grid item xs={10} style={{ position: 'relative'}}>
-                    <Form.Group controlId="formBasicDes">
-                        <Form.Control  as="textarea" rows={2} value={content} onChange={(e)=>setContent(e.target.value)}/>
-                    </Form.Group>
-                </Grid>
-                <Grid item xs={2} style={{ position: 'relative'}}>
-                    <Button variant="outline-secondary" onClick={(e)=>sendScream(e)}>
-                        Send
-                    </Button>
-                </Grid>
+        <Grid container >
+            <Grid item xs={12} style={{ padding:'1rem', height:'35rem', overflowY:'scroll'}} >
+                {   screamsList &&
+                    screamsList.messages &&
+                    screamsList.messages.map((mes,i)=>{
+                        return ( 
+                        <React.Fragment key={i}>
+                            <ChatRow key={i} mes={mes}> 
+                            </ChatRow> <br></br> 
+                        </React.Fragment> );
+                    })
+                }
+                <div ref={scrollRef} />
             </Grid>
         </Grid>
+        <Grid container>
+            <Grid item xs={10} style={{ position: 'relative'}}>
+                <Form.Group controlId="formBasicDes">
+                    <Form.Control  as="textarea" rows={2} value={content} onChange={(e)=>setContent(e.target.value)}/>
+                </Form.Group>
+            </Grid>
+            <Grid item xs={2} style={{ position: 'relative'}}>
+                <Button variant="outline-secondary" onClick={(e)=>sendScream(e)}>
+                    Send
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
     )
 }
 

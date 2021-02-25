@@ -83,13 +83,13 @@ const useStyles = makeStyles((theme) => ({
                 My Chats
             </Typography>
             <Row>
-                <Col className={classes.header} align="center">
-                    <Typography variant="h5"> 
+                <Col className={classes.header} >
+                    <Typography variant="h5" align="center"> 
                         Projects
                     </Typography>
                 </Col>
-                <Col className={classes.header} align="center">
-                    <Typography variant="h5" > 
+                <Col className={classes.header} >
+                    <Typography variant="h5" align="center"> 
                         Chats: {projectSelected.name}
                     </Typography>
                 </Col>
@@ -99,11 +99,9 @@ const useStyles = makeStyles((theme) => ({
                     { projectsChat.map((pro,l)=>{
                         return ( 
                         <Container key={l}>
-                            
                             <Button key={l} variant="outline-secondary" block onClick={()=>selectProject(pro)}>
                                 {pro.name}
                             </Button>
-                            
                         </Container> )
                     })}
                 </Col>
@@ -113,8 +111,6 @@ const useStyles = makeStyles((theme) => ({
                     </Col>
                 }                    
             </Row>
-        
-        
     </Container>  
         
     );

@@ -34,7 +34,10 @@ function App() {
         <BrowserRouter>
         <Container fluid>
           <MainNav></MainNav> 
-          <Router></Router>
+          <Container fluid>
+            <Router></Router>
+          </Container>
+          
           <Container fluid>
             <div className="footer">All right reserved 2020.</div>
           </Container>

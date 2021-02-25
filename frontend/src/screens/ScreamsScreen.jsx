@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { readScream } from '../actions/screamActions'
 
 import { Form, Button, Container, Card } from 'react-bootstrap';
-
+import { createScream } from '../actions/screamActions';
 import { updateScream } from '../actions/screamActions'
 //import Typography from '@material-ui/core/Typography';
 import ChatRow from '../components/ChatRow';
@@ -63,54 +63,58 @@ function ScreamsScreen(props) {
             }
             if(projectSelId !== screamsList.projectId){
                 dispatch(readScream(projectSelId));
+            }
+            console.log('success');
+            console.log(success);
+            if(!screamsList){
+                dispatch(createScream(projectSelId)); 
             } 
         } 
-    }, [dispatch, loading, scream, success, projectSelId, screamsList.projectId])
+    }, [dispatch, loading, scream, success, projectSelId, screamsList.projectId, screamsList])
 
     const scrollToBottom = () => {
         scrollRef.current.scrollIntoView({ behavior: 'smooth' })
     }
 
-
     return (
         <Container fluid>
-                <Card >
-                    <Typography variant="h5" align="center" > 
-                        Proyecto
-                    </Typography>
-                </Card>
-                <Container fluid xs={12} >
-                    <Button variant="outline-secondary" block onClick={backToChats}>Back to chats</Button>
-                </Container>
-                <Container fluid xs={12} className={classes.root}>
+            <Card >
+                <Typography variant="h5" align="center" > 
+                    Proyecto
+                </Typography>
+            </Card>
+            <Container fluid xs={12} >
+                <Button variant="outline-secondary" block onClick={backToChats}>Back to chats</Button>
+            </Container>
+            <Container fluid xs={12} className={classes.root}>
 
-                    <Container fluid >
-                    
-                        {   screamsList &&
-                            screamsList.messages &&
-                            screamsList.messages.map((mes,i)=>{
-                                return ( 
-                                <React.Fragment key={i}>
-                                    <ChatRow key={i} mes={mes}> 
-                                    </ChatRow> <br></br> 
-                                </React.Fragment> );
-                            })
-                        }
-                        <div ref={scrollRef} />
-                    </Container>
+                <Container fluid >
+                
+                    {   screamsList &&
+                        screamsList.messages &&
+                        screamsList.messages.map((mes,i)=>{
+                            return ( 
+                            <React.Fragment key={i}>
+                                <ChatRow key={i} mes={mes}> 
+                                </ChatRow> <br></br> 
+                            </React.Fragment> );
+                        })
+                    }
+                    <div ref={scrollRef} />
                 </Container>
-                <Grid container justify="center">
-                    <Grid item xs={10} style={{ position: 'relative'}}>
-                        <Form.Group controlId="formBasicDes">
-                            <Form.Control  as="textarea" rows={1} value={content} onChange={(e)=>setContent(e.target.value)}/>
-                        </Form.Group>
-                    </Grid>
-                    <Grid item xs={2} style={{ position: 'relative'}}>
-                        <Button variant="outline-secondary" onClick={(e)=>sendScream(e)} block>
-                            Send
-                        </Button>
-                    </Grid>
+            </Container>
+            <Grid container justify="center">
+                <Grid item xs={10} style={{ position: 'relative'}}>
+                    <Form.Group controlId="formBasicDes">
+                        <Form.Control  as="textarea" rows={1} value={content} onChange={(e)=>setContent(e.target.value)}/>
+                    </Form.Group>
                 </Grid>
+                <Grid item xs={2} style={{ position: 'relative'}}>
+                    <Button variant="outline-secondary" onClick={(e)=>sendScream(e)} block>
+                        Send
+                    </Button>
+                </Grid>
+            </Grid>
             
         </Container>
     )

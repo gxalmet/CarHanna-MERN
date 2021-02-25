@@ -261,10 +261,10 @@ export default function MainNav() {
                           <ListItemIcon><CalendarViewDayIcon /></ListItemIcon>
                           <ListItemText primary="Calendar"/>
                         </ListItem>
-                        <ListItem button key="chat" onClick={()=>navigate('/chat')} className={classes.listMenu}>
+                        {/* <ListItem button key="chat" onClick={()=>navigate('/chat')} className={classes.listMenu}>
                           <ListItemIcon><ChatIcon /></ListItemIcon>
                           <ListItemText primary="Chat"/>
-                        </ListItem>
+                        </ListItem> */}
                         <ListItem button key="chatdev" onClick={()=>navigate('/chatdev')} className={classes.listMenu}>
                           <ListItemIcon><ChatIcon /></ListItemIcon>
                           <ListItemText primary="Chat Device"/>

@@ -52,16 +52,17 @@ var projectController = {
         }
     },
     search: async function(req, res) {
-        var tree = req.query.tree;
+
+        var tree = JSON.parse(req.query.tree);
         var user = req.query.user_id;
 
         var query = { team: user };
 
         try {
             const projectsSearch = await Project.find(query);
-            var projectsResult = [];
 
-            if (tree) {
+            var projectsResult = [];
+            if (tree === true) {
                 projectsResult = projectsTree(projectsSearch);
             } else {
                 projectsResult = projectsSearch;
