@@ -31,16 +31,16 @@ function App() {
 
     //   </Grid>
     // </BrowserRouter>
-        <BrowserRouter>
+      <BrowserRouter>
         <Container fluid>
           <MainNav></MainNav> 
           <Container fluid>
             <Router></Router>
           </Container>
           
-          <Container fluid>
+          {/* <Container fluid>
             <div className="footer">All right reserved 2020.</div>
-          </Container>
+          </Container> */}
           
   
         </Container>
