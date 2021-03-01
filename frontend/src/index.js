@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import store from './store';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import * as serviceWorkerRegistration from './public/serviceWorkerRegistration';
+import * as serviceWorkerRegistration from '../public/serviceWorkerRegistration';
 
 ReactDOM.render(
   <Provider store={store}>
