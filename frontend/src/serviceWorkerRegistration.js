@@ -10,18 +10,23 @@
 // To learn more about the benefits of this model and instructions on how to
 // opt-in, read https://cra.link/PWA
 
-const isLocalhost = Boolean(
-    window.location.hostname === 'localhost' ||
-    // [::1] is the IPv6 localhost address.
-    window.location.hostname === '[::1]' ||
-    // 127.0.0.0/8 are considered localhost for IPv4.
-    window.location.hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/)
-);
+// const isLocalhost = Boolean(
+//     window.location.hostname === 'localhost' ||
+//     // [::1] is the IPv6 localhost address.
+//     window.location.hostname === '[::1]' ||
+//     // 127.0.0.0/8 are considered localhost for IPv4.
+//     window.location.hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/)
+// );
+
+const isLocalhost = false;
 
 export function register(config) {
+    debugger;
     if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
         // The URL constructor is available in all browsers that support SW.
         const publicUrl = new URL(process.env.PUBLIC_URL, window.location.href);
+        console.log(publicUrl);
+        console.log(process);
         if (publicUrl.origin !== window.location.origin) {
             // Our service worker won't work if PUBLIC_URL is on a different origin
             // from what our page is served on. This might happen if a CDN is used to
@@ -29,15 +34,17 @@ export function register(config) {
             return;
         }
 
-        window.addEventListener('load', () => {
+        window.top.addEventListener('load', () => {
             const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
-
+            console.log(swUrl);
+            console.log(process.env);
             if (isLocalhost) {
                 // This is running on localhost. Let's check if a service worker still exists or not.
                 checkValidServiceWorker(swUrl, config);
 
                 // Add some additional logging to localhost, pointing developers to the
                 // service worker/PWA documentation.
+                debugger;
                 navigator.serviceWorker.ready.then(() => {
                     console.log(
                         'This web app is being served cache-first by a service ' +
